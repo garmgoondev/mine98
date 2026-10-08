@@ -1,0 +1,58 @@
+{
+  "id": "site-02-minesweeper",
+  "name": "mine98",
+  "nameKo": "웹지뢰찾기",
+  "codebasePath": "D:/Dev/mine98",
+  "compatibilityAliasPath": "D:/Dev/webminesweeper",
+  "domain": "mine98.com",
+  "githubRepo": "https://github.com/garmgoondev/mine98",
+  "pagesUrl": "https://mine98.pages.dev",
+  "productionUrl": "https://mine98.com",
+  "status": "live_production",
+  "monthlySearchVolume": {
+    "googleKorea": 368000,
+    "naver": 68300,
+    "totalDomestic": 436300,
+    "pcSharePercent": 80.8
+  },
+  "techStack": {
+    "framework": "Next.js 16.4.0 (Turbopack, output: export)",
+    "styling": "Tailwind CSS v4 (3D bevel utility + dark theme)",
+    "audio": "Web Audio API (8-bit retro synthesizer, 0 external assets)",
+    "icons": "Lucide React, Sharp PNG/ICO generator",
+    "confetti": "Canvas Confetti"
+  },
+  "killerFeatures": [
+    "보스 키 (Boss Key / Stealth Mode): ESC 또는 ~ 누르면 0.01초 만에 엑셀 365 / 위키백과 화면으로 위장",
+    "첫 클릭 100% 안전 보장 (Zero-Fail Opening): 첫 수 주변 9칸 무조건 안전 오프닝 클러스터 보장",
+    "스피드런 코드(Chording): 깃발 만족 시 숫자 클릭으로 주변 안전칸 원터치 자동 개방",
+    "윈도우 클래식 98 / 모던 다크 테마 듀얼 지원",
+    "모바일 터치 퀵 깃발 토글 모드 & 롱터치 햅틱 지원",
+    "개인 최고 기록(초급/중급/고급) 및 카카오톡/클립보드 결과 공유"
+  ],
+  "seoAssets": {
+    "structuredData": "Schema.org WebApplication JSON-LD",
+    "ogImage": "public/og-image.png (1200x630)",
+    "faviconIco": "public/favicon.ico (16/32/48 multi-res)",
+    "manifest": "public/site.webmanifest",
+    "robotsTxt": "public/robots.txt",
+    "sitemapXml": "public/sitemap.xml",
+    "guideSection": "1-2-1 및 1-2-2-1 고수 공식, FAQ 아코디언 탑재"
+  },
+  "searchEngineRegistrations": {
+    "googleSearchConsole": {
+      "property": "sc-domain:mine98.com",
+      "verificationMethod": "DNS TXT (Cloudflare DNS)",
+      "status": "verified",
+      "sitemapSubmitted": "https://mine98.com/sitemap.xml",
+      "submissionStatus": "Success"
+    },
+    "naverSearchAdvisor": {
+      "site": "https://mine98.com",
+      "verificationMethod": "HTML File & Meta Tag (CAPTCHA solved)",
+      "status": "verified",
+      "sitemapSubmitted": "sitemap.xml (26.10.08 16:48:05)",
+      "crawlRequested": "/ (26.10.08 16:52:46)"
+    }
+  }
+}
