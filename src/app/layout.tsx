@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: '웹지뢰찾기 - mine98.com | 설치 없는 무료 클래식 윈도우 98 지뢰찾기',
   description:
-    '별도 설치나 로그인 없이 브라우저에서 바로 즐기는 무료 온라인 지뢰찾기 게임입니다. 윈도우 98 정통 클래식 손맛, 첫 클릭 100% 안전 보장, 직장인·학생 사내망 특화 보스 키(ESC 위장 기능) 및 스피드런 랭킹을 완벽 지원합니다.',
+    '별도 설치나 로그인 없이 브라우저에서 바로 즐기는 무료 온라인 지뢰찾기 게임입니다. 윈도우 98 정통 클래식 손맛, 첫 클릭 100% 안전 보장, 직장인·학생 사내망 특화 보스 키(ESC 위장 기능) 및 스피드런 기록 측정을 완벽 지원합니다.',
   keywords: [
     '지뢰찾기',
     '지뢰찾기 게임',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://mine98.com',
     title: '웹지뢰찾기 (mine98.com) - 윈도우 98 클래식 지뢰찾기',
-    description: '0.3초 무설치 로딩, 윈도우 98 정통 손맛, 사내망 특화 보스 키(ESC 위장) 및 스피드런 랭킹 지원.',
+    description: '초고속 무설치 로딩, 윈도우 98 정통 손맛, 사내망 특화 보스 키(ESC 위장) 및 스피드런 기록 측정 지원.',
     siteName: '웹지뢰찾기 - mine98.com',
     images: [
       {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '웹지뢰찾기 (mine98.com) - 윈도우 98 클래식 지뢰찾기',
-    description: '0.3초 무설치 로딩, 윈도우 정통 손맛, 사내망 특화 보스 키(ESC 위장) 지원.',
+    description: '초고속 무설치 로딩, 윈도우 정통 손맛, 사내망 특화 보스 키(ESC 위장) 지원.',
     images: ['/og-image.png'],
   },
   verification: {
@@ -68,11 +68,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#020617',
+  themeColor: '#124b55',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function RootLayout({
@@ -81,8 +79,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="dark">
-      <body className="antialiased bg-slate-950 text-slate-100 min-h-screen">
+    <html lang="ko">
+      <body className="antialiased min-h-screen bg-[#11454f] dark:bg-slate-950 transition-colors">
         {children}
       </body>
     </html>

@@ -3,6 +3,7 @@
 
 class SoundManager {
   private ctx: AudioContext | null = null;
+  private masterGain: GainNode | null = null;
   private muted: boolean = false;
 
   constructor() {
@@ -11,22 +12,46 @@ class SoundManager {
 
   private initContext() {
     if (!this.ctx && typeof window !== 'undefined') {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       if (AudioCtx) {
         this.ctx = new AudioCtx();
+        this.masterGain = this.ctx.createGain();
+        this.masterGain.gain.setValueAtTime(this.muted ? 0 : 1, this.ctx.currentTime);
+        this.masterGain.connect(this.ctx.destination);
       }
     }
-    if (this.ctx && this.ctx.state === 'suspended') {
+    if (this.ctx && this.ctx.state === 'suspended' && !this.muted) {
       this.ctx.resume().catch(() => {});
     }
   }
 
   public setMuted(muted: boolean) {
     this.muted = muted;
+    if (this.masterGain && this.ctx) {
+      try {
+        this.masterGain.gain.setValueAtTime(muted ? 0 : 1, this.ctx.currentTime);
+      } catch {
+        // ignore
+      }
+    }
+    if (this.ctx) {
+      if (muted && this.ctx.state === 'running') {
+        this.ctx.suspend().catch(() => {});
+      } else if (!muted && this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
+    }
   }
 
   public isMuted(): boolean {
     return this.muted;
+  }
+
+  private getDestination(): AudioNode | null {
+    if (!this.ctx) return null;
+    return this.masterGain || this.ctx.destination;
   }
 
   // Cell click pop
@@ -34,6 +59,8 @@ class SoundManager {
     if (this.muted) return;
     this.initContext();
     if (!this.ctx) return;
+    const dest = this.getDestination();
+    if (!dest) return;
 
     try {
       const osc = this.ctx.createOscillator();
@@ -47,7 +74,7 @@ class SoundManager {
       gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
 
       osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(dest);
 
       osc.start();
       osc.stop(this.ctx.currentTime + 0.04);
@@ -61,6 +88,8 @@ class SoundManager {
     if (this.muted) return;
     this.initContext();
     if (!this.ctx) return;
+    const dest = this.getDestination();
+    if (!dest) return;
 
     try {
       const osc = this.ctx.createOscillator();
@@ -74,7 +103,7 @@ class SoundManager {
       gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.05);
 
       osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(dest);
 
       osc.start();
       osc.stop(this.ctx.currentTime + 0.05);
@@ -88,6 +117,8 @@ class SoundManager {
     if (this.muted) return;
     this.initContext();
     if (!this.ctx) return;
+    const dest = this.getDestination();
+    if (!dest) return;
 
     try {
       const now = this.ctx.currentTime;
@@ -106,7 +137,7 @@ class SoundManager {
 
       osc1.connect(gain);
       osc2.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(dest);
 
       osc1.start(now);
       osc1.stop(now + 0.04);
@@ -122,6 +153,8 @@ class SoundManager {
     if (this.muted) return;
     this.initContext();
     if (!this.ctx) return;
+    const dest = this.getDestination();
+    if (!dest) return;
 
     try {
       const bufferSize = this.ctx.sampleRate * 0.4;
@@ -145,7 +178,7 @@ class SoundManager {
 
       noise.connect(filter);
       filter.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(dest);
 
       noise.start();
       noise.stop(this.ctx.currentTime + 0.4);
@@ -159,6 +192,8 @@ class SoundManager {
     if (this.muted) return;
     this.initContext();
     if (!this.ctx) return;
+    const dest = this.getDestination();
+    if (!dest) return;
 
     try {
       const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
@@ -176,7 +211,7 @@ class SoundManager {
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.25);
 
         osc.connect(gain);
-        gain.connect(this.ctx.destination);
+        gain.connect(dest);
 
         osc.start(now + i * 0.08);
         osc.stop(now + i * 0.08 + 0.25);

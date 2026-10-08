@@ -19,10 +19,18 @@ export default function DigitDisplay({ value, className = '' }: DigitDisplayProp
 
   return (
     <div
-      className={`inline-flex items-center px-1.5 py-0.5 bg-black border-2 border-t-[#808080] border-l-[#808080] border-b-[#ffffff] border-r-[#ffffff] rounded-sm select-none shadow-inner ${className}`}
+      className={`relative inline-flex items-center justify-center px-2 py-0.5 bg-black border-2 border-t-[#6b7280] border-l-[#6b7280] border-b-[#f3f4f6] border-r-[#f3f4f6] rounded-[2px] select-none shadow-inner ${className}`}
       aria-label={`Display: ${str}`}
     >
-      <span className="font-mono text-2xl sm:text-3xl font-black tracking-widest text-red-600 drop-shadow-[0_0_6px_rgba(239,68,68,0.85)]">
+      {/* Faint 888 ghost background for authentic 7-segment display feel */}
+      <span
+        aria-hidden="true"
+        className="font-mono text-2xl sm:text-3xl font-black tracking-widest text-red-950/40 select-none absolute"
+      >
+        888
+      </span>
+      {/* Active bright red LED digits */}
+      <span className="relative z-10 font-mono text-2xl sm:text-3xl font-black tracking-widest text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.9)]">
         {str}
       </span>
     </div>

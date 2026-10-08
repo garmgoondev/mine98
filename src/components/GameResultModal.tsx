@@ -75,23 +75,23 @@ export default function GameResultModal({
         </div>
 
         {/* Stats Grid */}
-        <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 text-sm text-slate-300">
+        <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800/90 space-y-2.5 text-sm text-slate-200 shadow-inner">
           <div className="flex justify-between items-center">
-            <span className="text-slate-400">클리어 타임</span>
-            <span className="font-mono font-extrabold text-base text-amber-400">{timeSeconds}초</span>
+            <span className="text-slate-300 font-medium">{isWon ? '클리어 타임' : '생존 시간'}</span>
+            <span className="font-mono font-black text-lg text-amber-400 drop-shadow-sm">{timeSeconds}초</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-slate-400">클릭 수</span>
-            <span className="font-mono font-bold text-slate-200">{clicks}회</span>
+            <span className="text-slate-300 font-medium">클릭 수</span>
+            <span className="font-mono font-black text-base text-white">{clicks}회</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-slate-400">개인 최고 기록</span>
-            <span className="font-mono font-bold text-slate-200">
+            <span className="text-slate-300 font-medium">개인 최고 기록</span>
+            <span className="font-mono font-black text-base text-white">
               {bestTime > 0 ? `${bestTime}초` : '-'}
             </span>
           </div>
           {isNewRecord && (
-            <div className="pt-2 border-t border-slate-800 flex items-center justify-center gap-1.5 text-xs font-black text-emerald-400">
+            <div className="pt-2.5 border-t border-slate-800 flex items-center justify-center gap-1.5 text-xs font-black text-emerald-400">
               <Flame className="w-4 h-4 text-emerald-400 animate-pulse" />
               <span>새로운 개인 최고 기록 달성! 🚀</span>
             </div>
@@ -102,23 +102,23 @@ export default function GameResultModal({
         <div className="flex flex-col gap-2.5 pt-2">
           <button
             onClick={onRestart}
-            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-base hover:from-amber-400 hover:to-amber-500 transition shadow-lg cursor-pointer flex items-center justify-center gap-2"
+            className="w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-base transition shadow-lg cursor-pointer flex items-center justify-center gap-2 active:scale-95"
           >
-            <RotateCcw className="w-5 h-5" />
+            <RotateCcw className="w-5 h-5 stroke-[2.5]" />
             <span>새 게임 시작하기</span>
           </button>
 
           <div className="flex gap-2">
             <button
               onClick={onClose}
-              className="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm transition border border-slate-700 flex items-center justify-center gap-1.5 cursor-pointer"
+              className="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition border border-slate-650 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
             >
               <Eye className="w-4 h-4" />
               <span>판 둘러보기</span>
             </button>
             <button
               onClick={onShare}
-              className="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-sm transition border border-slate-700 flex items-center justify-center gap-1.5 cursor-pointer"
+              className="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-sm transition border border-slate-650 flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
             >
               <Share2 className="w-4 h-4" />
               <span>결과 공유</span>

@@ -4,23 +4,32 @@ const STORAGE_KEYS = {
   HIGH_SCORES: 'webminesweeper_high_scores_v1',
   THEME: 'webminesweeper_theme',
   SOUND_MUTED: 'webminesweeper_sound_muted',
-  CUSTOM_SETTINGS: 'webminesweeper_custom_settings',
 };
 
-const DEFAULT_SCORES: HighScores = {
-  beginner: null,
-  intermediate: null,
-  expert: null,
-};
+function createDefaultScores(): HighScores {
+  return {
+    beginner: null,
+    intermediate: null,
+    expert: null,
+  };
+}
 
 export function loadHighScores(): HighScores {
-  if (typeof window === 'undefined') return DEFAULT_SCORES;
+  if (typeof window === 'undefined') return createDefaultScores();
   try {
     const raw = localStorage.getItem(STORAGE_KEYS.HIGH_SCORES);
-    if (!raw) return DEFAULT_SCORES;
-    return JSON.parse(raw);
+    if (!raw) return createDefaultScores();
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+      return {
+        beginner: parsed.beginner || null,
+        intermediate: parsed.intermediate || null,
+        expert: parsed.expert || null,
+      };
+    }
+    return createDefaultScores();
   } catch {
-    return DEFAULT_SCORES;
+    return createDefaultScores();
   }
 }
 
@@ -53,7 +62,7 @@ export function saveHighScore(
 
   return {
     isNewRecord,
-    currentBest: current[difficulty]?.timeSeconds || timeSeconds,
+    currentBest: current[difficulty]?.timeSeconds ?? timeSeconds,
   };
 }
 
