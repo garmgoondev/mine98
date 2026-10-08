@@ -1,6 +1,6 @@
 {
-  "name": "웹지뢰찾기 - WebMinesweeper",
-  "short_name": "웹지뢰찾기",
+  "name": "웹지뢰찾기 - mine98.com",
+  "short_name": "mine98",
   "description": "설치 없는 무료 클래식 윈도우 웹 지뢰찾기 게임",
   "start_url": "/",
   "display": "standalone",

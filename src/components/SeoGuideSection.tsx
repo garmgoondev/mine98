@@ -163,8 +163,8 @@ export default function SeoGuideSection() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: '웹지뢰찾기 (WebMinesweeper)',
-            url: 'https://webminesweeper.com',
+            name: '웹지뢰찾기 - mine98.com (Windows 98 Classic Minesweeper)',
+            url: 'https://mine98.com',
             description:
               '설치 없이 브라우저에서 바로 즐기는 무료 온라인 지뢰찾기 게임. 윈도우 클래식 감성, 첫 클릭 안전 보장, 직장인 사내망 특화 보스 키(ESC 위장 기능) 및 스피드런 랭킹 지원.',
             applicationCategory: 'GameApplication',

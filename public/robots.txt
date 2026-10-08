@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://webminesweeper.com/sitemap.xml
+Sitemap: https://mine98.com/sitemap.xml

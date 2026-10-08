@@ -273,9 +273,9 @@ export default function Home() {
 
   // Share Result
   const handleShareResult = () => {
-    const text = `[웹지뢰찾기] ${config.nameKo} 난이도를 ${timer}초 만에 클리어했습니다! 설치 없이 브라우저에서 바로 즐기는 무료 지뢰찾기: https://webminesweeper.com`;
+    const text = `[웹지뢰찾기] ${config.nameKo} 난이도를 ${timer}초 만에 클리어했습니다! 설치 없이 브라우저에서 바로 즐기는 무료 지뢰찾기: https://mine98.com`;
     if (navigator.share) {
-      navigator.share({ title: '웹지뢰찾기 클리어 기록', text, url: 'https://webminesweeper.com' }).catch(() => {});
+      navigator.share({ title: '웹지뢰찾기 (mine98.com) 클리어 기록', text, url: 'https://mine98.com' }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text);
       alert('클리어 기록 링크가 클립보드에 복사되었습니다!');
@@ -298,7 +298,7 @@ export default function Home() {
           <div>
             <div className="flex items-center gap-2">
               <span className={`font-black text-2xl tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
-                WebMinesweeper
+                mine<span className="text-amber-500">98</span><span className="text-sm font-semibold text-slate-400">.com</span>
               </span>
               <span className="text-xs font-extrabold bg-amber-500/20 text-amber-500 border border-amber-500/40 px-2 py-0.5 rounded-full">
                 웹지뢰찾기
