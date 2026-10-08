@@ -44,22 +44,18 @@ export default function SeoGuideSection({ theme = 'classic' }: SeoGuideSectionPr
       className={`w-full max-w-4xl mx-auto px-4 py-12 mt-8 border-t space-y-12 transition-colors ${
         isDark
           ? 'border-slate-800 text-slate-300'
-          : 'border-slate-300/80 text-slate-800'
+          : 'border-teal-700/60 text-teal-100'
       }`}
     >
-      {/* 1. Header Intro */}
+      {/* 1. Header Intro (High-Contrast White & Mint over Dark Teal Background) */}
       <div className="text-center space-y-3">
-        <h2
-          className={`text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center justify-center gap-2 ${
-            isDark ? 'text-white' : 'text-slate-900'
-          }`}
-        >
-          <BookOpen className="w-6 h-6 sm:w-7 sm:h-7 text-amber-500 shrink-0" />
+        <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center justify-center gap-2 drop-shadow-md">
+          <BookOpen className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400 shrink-0" />
           <span>웹지뢰찾기(WebMinesweeper) 공식 가이드: 규칙 &amp; 1-2-1 필승 공략</span>
         </h2>
         <p
-          className={`text-sm sm:text-base max-w-2xl mx-auto leading-relaxed ${
-            isDark ? 'text-slate-400' : 'text-slate-600'
+          className={`text-sm sm:text-base max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium ${
+            isDark ? 'text-slate-300' : 'text-teal-100'
           }`}
         >
           별도 설치나 회원가입 없이 브라우저에서 바로 즐기는 무료 온라인 지뢰찾기 게임입니다. 윈도우 정통 클래식 손맛과
@@ -129,16 +125,16 @@ export default function SeoGuideSection({ theme = 'classic' }: SeoGuideSectionPr
 
       {/* 3. Minesweeper Master Strategies (1-2-1 & 1-2-2-1 Patterns) */}
       <div
-        className={`rounded-3xl p-6 sm:p-8 space-y-6 border shadow-sm transition ${
+        className={`rounded-3xl p-6 sm:p-8 space-y-6 border shadow-md transition ${
           isDark
-            ? 'bg-slate-900/80 border-slate-800'
-            : 'bg-white border-slate-200'
+            ? 'bg-slate-900/90 border-slate-800'
+            : 'bg-white border-slate-200 shadow-slate-100'
         }`}
       >
-        <h3 className={`text-xl sm:text-2xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+        <h3 className={`text-xl sm:text-2xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
           🧠 지뢰찾기 고수들의 핵심 추리 공식 2가지
         </h3>
-        <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+        <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700 font-normal'}`}>
           지뢰찾기는 단순한 운 게임이 아닌 100% 논리 연역 퍼즐입니다. 가장 빈번하게 등장하는 두 가지 핵심 패턴만 숙지해도
           고급 난이도의 클리어 성공률을 극적으로 높일 수 있습니다.
         </p>
@@ -212,7 +208,7 @@ export default function SeoGuideSection({ theme = 'classic' }: SeoGuideSectionPr
 
       {/* 4. Official FAQ Accordion (Answers preserved in static DOM for SEO indexing) */}
       <div className="space-y-4">
-        <h3 className={`text-xl sm:text-2xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+        <h3 className="text-xl sm:text-2xl font-black text-white drop-shadow-md">
           자주 묻는 질문 (FAQ)
         </h3>
         <div className="space-y-3">
@@ -221,7 +217,7 @@ export default function SeoGuideSection({ theme = 'classic' }: SeoGuideSectionPr
             return (
               <div
                 key={idx}
-                className={`border rounded-2xl overflow-hidden transition ${
+                className={`border rounded-2xl overflow-hidden transition shadow-sm ${
                   isDark
                     ? 'bg-slate-900/90 border-slate-800'
                     : 'bg-white border-slate-200 shadow-sm'
@@ -250,7 +246,7 @@ export default function SeoGuideSection({ theme = 'classic' }: SeoGuideSectionPr
                   } ${
                     isDark
                       ? 'text-slate-300 border-slate-800/60'
-                      : 'text-slate-600 border-slate-100'
+                      : 'text-slate-700 border-slate-100'
                   }`}
                 >
                   {faq.a}
