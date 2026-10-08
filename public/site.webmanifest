@@ -1,0 +1,26 @@
+{
+  "name": "웹지뢰찾기 - WebMinesweeper",
+  "short_name": "웹지뢰찾기",
+  "description": "설치 없는 무료 클래식 윈도우 웹 지뢰찾기 게임",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ]
+}
