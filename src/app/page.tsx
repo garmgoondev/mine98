@@ -102,7 +102,13 @@ export default function Home() {
   // Global Keyboard Shortcuts (F2 restart, ESC / ~ boss key)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' || e.key === '`' || e.key === '~') {
+      if (e.key === 'Escape') {
+        if (isResultModalOpen) {
+          setIsResultModalOpen(false);
+          return;
+        }
+        setIsBossKeyOpen((prev) => !prev);
+      } else if (e.key === '`' || e.key === '~') {
         setIsBossKeyOpen((prev) => !prev);
       } else if (e.key === 'F2') {
         e.preventDefault();
@@ -111,7 +117,7 @@ export default function Home() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [config]);
+  }, [config, isResultModalOpen]);
 
   // Start / Reset Game
   const restartGame = useCallback(
@@ -473,10 +479,22 @@ export default function Home() {
         </div>
 
         {/* Game Bottom Bar Controls */}
-        <div className="flex items-center gap-3 mt-4 text-xs text-slate-400">
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-4 text-xs text-slate-400">
           <span>클릭 수: <strong className="font-mono text-slate-200">{clicks}</strong></span>
           <span>•</span>
           <span>단축키: <strong>F2</strong> (재시작), <strong>ESC</strong> (보스 키)</span>
+          {(gameStatus === 'won' || gameStatus === 'lost') && !isResultModalOpen && (
+            <>
+              <span>•</span>
+              <button
+                onClick={() => setIsResultModalOpen(true)}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold hover:bg-amber-500/30 transition cursor-pointer"
+              >
+                <Trophy className="w-3.5 h-3.5" />
+                <span>결과 다시 보기</span>
+              </button>
+            </>
+          )}
         </div>
 
         {/* 4. Comprehensive SEO Guide Section (Rules, 1-2-1 Patterns, FAQs) */}
@@ -487,6 +505,7 @@ export default function Home() {
       <BossKeyModal isOpen={isBossKeyOpen} onClose={() => setIsBossKeyOpen(false)} />
 
       <GameResultModal
+        isOpen={isResultModalOpen}
         status={gameStatus}
         timeSeconds={timer}
         clicks={clicks}

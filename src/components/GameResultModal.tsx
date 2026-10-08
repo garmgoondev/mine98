@@ -5,6 +5,7 @@ import { Trophy, RotateCcw, Share2, Eye, X, Flame } from 'lucide-react';
 import { GameStatus } from '../lib/types';
 
 interface GameResultModalProps {
+  isOpen: boolean;
   status: GameStatus;
   timeSeconds: number;
   clicks: number;
@@ -17,6 +18,7 @@ interface GameResultModalProps {
 }
 
 export default function GameResultModal({
+  isOpen,
   status,
   timeSeconds,
   clicks,
@@ -27,7 +29,7 @@ export default function GameResultModal({
   onClose,
   onShare,
 }: GameResultModalProps) {
-  if (status !== 'won' && status !== 'lost') return null;
+  if (!isOpen || (status !== 'won' && status !== 'lost')) return null;
 
   const isWon = status === 'won';
 
