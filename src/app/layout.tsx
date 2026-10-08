@@ -60,6 +60,11 @@ export const metadata: Metadata = {
     description: '0.3초 무설치 로딩, 윈도우 정통 손맛, 사내망 특화 보스 키(ESC 위장) 지원.',
     images: ['/og-image.png'],
   },
+  verification: {
+    other: {
+      'naver-site-verification': 'd603e628b40f166395aeb6ee8842e8a527cc0177',
+    },
+  },
 };
 
 export const viewport: Viewport = {
